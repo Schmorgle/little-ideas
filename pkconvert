@@ -1,0 +1,52 @@
+#include <stdio.h>
+#include <ctype.h>
+
+float convertPoundsToKilograms(float pounds)
+{
+    // Conversion formula: 1 pound = 0.453592 kilograms
+    float kilograms = pounds * 0.453592;
+    return kilograms;
+}
+
+float convertKilogramsToPounds(float kilograms)
+{
+    // Conversion formula: 1 kilogram = 2.20462 pounds
+    float pounds = kilograms * 2.20462;
+    return pounds;
+}
+
+int main(void)
+{
+    float weight;
+    char choice;
+    
+    printf("Weight Conversion Tool\n");
+    printf("=========================\n");
+    printf("Enter 'P' to convert pounds to kilograms\n");
+    printf("Enter 'K' to convert kilograms to pounds\n");
+    printf("Choice: ");
+    scanf(" %c", &choice); // Space before %c to skip whitespace
+    
+    choice = toupper(choice); // Convert choice to uppercase
+    
+    switch (choice)
+    {
+        case 'P':
+            printf("Enter weight in pounds: ");
+            scanf("%f", &weight);
+            printf("%.2f pounds = %.2f kilograms\n", weight, convertPoundsToKilograms(weight));
+            break;
+            
+        case 'K':
+            printf("Enter weight in kilograms: ");
+            scanf("%f", &weight);
+            printf("%.2f kilograms = %.2f pounds\n", weight, convertKilogramsToPounds(weight));
+            break;
+            
+        default:
+            printf("Invalid choice!\n");
+            break;
+    }
+    
+    return 0;
+}
