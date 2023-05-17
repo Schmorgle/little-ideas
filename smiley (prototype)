@@ -1,0 +1,79 @@
+#include <stdio.h>
+#include <stdbool.h>
+#include <string.h>
+
+void printEmoji(int rating, bool isHappy) {
+    if (isHappy) {
+        switch (rating) {
+            case 1:
+                printf("You are feeling slightly happy! Here's an emoji: 😊\n");
+                break;
+            case 2:
+                printf("You are feeling moderately happy! Here's an emoji: 😄\n");
+                break;
+            case 3:
+                printf("You are feeling quite happy! Here's an emoji: 😀\n");
+                break;
+            case 4:
+                printf("You are feeling very happy! Here's an emoji: 😃\n");
+                break;
+            case 5:
+                printf("You are feeling extremely happy! Here's an emoji: 😁\n");
+                break;
+            default:
+                printf("Invalid rating!\n");
+                break;
+        }
+    } else {
+        switch (rating) {
+            case 1:
+                printf("You are feeling slightly sad. Here's an emoji: 😔\n");
+                break;
+            case 2:
+                printf("You are feeling moderately sad. Here's an emoji: 🙁\n");
+                break;
+            case 3:
+                printf("You are feeling quite sad. Here's an emoji: ☹️\n");
+                break;
+            case 4:
+                printf("You are feeling very sad. Here's an emoji: 😢\n");
+                break;
+            case 5:
+                printf("You are feeling extremely sad. Here's an emoji: 😭\n");
+                break;
+            default:
+                printf("Invalid rating!\n");
+                break;
+        }
+    }
+}
+
+int main(void) {
+    int rating;
+    bool isHappy;
+    char mood[10];
+
+    printf("How are you feeling? (happy/sad): ");
+    scanf("%s", mood);
+
+    if (strcmp(mood, "happy") == 0) {
+        isHappy = true;
+    } else if (strcmp(mood, "sad") == 0) {
+        isHappy = false;
+    } else {
+        printf("Invalid mood!\n");
+        return 1;
+    }
+
+    printf("Rate your feeling on a scale of 1 to 5: ");
+    scanf("%d", &rating);
+
+    if (rating < 1 || rating > 5) {
+        printf("Invalid rating!\n");
+        return 1;
+    }
+
+    printEmoji(rating, isHappy);
+
+    return 0;
+}
